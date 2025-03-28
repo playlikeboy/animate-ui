@@ -6,11 +6,11 @@ import {
   useTransform,
   type MotionValue,
   motion,
+  useInView,
 } from 'motion/react';
 import useMeasure from 'react-use-measure';
 
 import { cn } from '@/lib/utils';
-import { useInView } from '@/hooks/use-in-view';
 
 const TRANSITION = {
   type: 'spring',
@@ -104,7 +104,8 @@ const SlidingNumber = React.forwardRef<HTMLSpanElement, SlidingNumberProps>(
     },
     ref,
   ) => {
-    const [viewRef, inView] = useInView<HTMLSpanElement>({ threshold: 0.1 });
+    const viewRef = React.useRef<HTMLSpanElement>(null);
+    const inView = useInView(viewRef, { once: true });
     React.useImperativeHandle(ref, () => viewRef.current!);
 
     const prevNumberRef = React.useRef<number>(0);
