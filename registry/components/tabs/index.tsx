@@ -34,22 +34,34 @@ type TabsProps =
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   (
-    { defaultValue, value, onValueChange, children, className },
+    { defaultValue, value, onValueChange, children, className, ...props },
     forwardedRef,
   ) => {
     const [activeValue, setActiveValue] = React.useState(defaultValue);
     const triggersRef = React.useRef(new Map<string, HTMLElement>());
+    const initialSet = React.useRef(false);
+    const isControlled = value !== undefined;
 
     React.useEffect(() => {
-      if (activeValue === undefined && triggersRef.current.size > 0) {
+      if (
+        !isControlled &&
+        activeValue === undefined &&
+        triggersRef.current.size > 0 &&
+        !initialSet.current
+      ) {
         const firstTab = Array.from(triggersRef.current.keys())[0];
         setActiveValue(firstTab);
+        initialSet.current = true;
       }
-    }, [activeValue]);
+    }, [activeValue, isControlled]);
 
     const registerTrigger = (value: string, node: HTMLElement | null) => {
       if (node) {
         triggersRef.current.set(value, node);
+        if (!isControlled && activeValue === undefined && !initialSet.current) {
+          setActiveValue(value);
+          initialSet.current = true;
+        }
       } else {
         triggersRef.current.delete(value);
       }
@@ -60,7 +72,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     };
 
     const handleValueChange = (val: string) => {
-      if (value === undefined) {
+      if (!isControlled) {
         setActiveValue(val);
       } else {
         onValueChange?.(val);
@@ -87,7 +99,11 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           getTrigger,
         }}
       >
-        <div ref={setRef} className={cn('flex flex-col gap-2', className)}>
+        <div
+          ref={setRef}
+          className={cn('flex flex-col gap-2', className)}
+          {...props}
+        >
           {children}
         </div>
       </TabsContext.Provider>
