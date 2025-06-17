@@ -14,7 +14,9 @@ type HouseWifiProps = IconProps<keyof typeof animations>;
 
 const animations = {
   default: (() => {
-    const animation: Record<string, Variants> = {};
+    const animation: Record<string, Variants> = {
+      path4: {},
+    };
 
     for (let i = 1; i <= 3; i++) {
       animation[`path${i}`] = {
@@ -47,6 +49,8 @@ const animations = {
     return animation;
   })() satisfies Record<string, Variants>,
 } as const;
+
+console.log('animations', animations);
 
 function IconComponent({ size, ...props }: HouseWifiProps) {
   const { controls } = useAnimateIconContext();

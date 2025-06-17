@@ -19,7 +19,7 @@ const animations = {
       animate: {
         scale: [1, 0.9, 1],
         transition: {
-          duration: 0.8,
+          duration: 1.2,
           ease: 'easeInOut',
         },
       },
@@ -27,10 +27,24 @@ const animations = {
     path2: {
       initial: { pathLength: 1, opacity: 1 },
       animate: {
-        pathLength: [1, 0.05, 1],
+        pathLength: [1, 0, 1],
         opacity: [1, 0, 1],
         transition: {
-          duration: 0.8,
+          duration: 1.2,
+          ease: 'easeInOut',
+          opacity: { duration: 0.01 },
+        },
+      },
+    },
+  } satisfies Record<string, Variants>,
+  check: {
+    path2: {
+      initial: { pathLength: 1, opacity: 1 },
+      animate: {
+        pathLength: [0, 1],
+        opacity: [0, 1],
+        transition: {
+          duration: 0.6,
           ease: 'easeInOut',
           opacity: { duration: 0.01 },
         },
