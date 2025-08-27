@@ -36,6 +36,16 @@ author:
 
 <TypeTable
   type={{
+    variant: {
+      description: 'The variant of the checkbox.',
+      type: '"default" | "accent"',
+      required: false,
+    },
+    size: {
+      description: 'The size of the checkbox.',
+      type: '"default" | "sm" | "lg"',
+      required: false,
+    },
     '...props': {
       description: 'The props of the checkbox.',
       type: 'HTMLMotionProps<"button">',
