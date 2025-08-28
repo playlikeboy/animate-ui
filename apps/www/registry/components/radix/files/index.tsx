@@ -17,14 +17,8 @@ import {
   FileIcon as FileIconPrimitive,
   type FilesProps as FilesPrimitiveProps,
   type FolderItemProps as FolderItemPrimitiveProps,
-  type FolderHeaderProps as FolderHeaderPrimitiveProps,
-  type FolderTriggerProps as FolderTriggerPrimitiveProps,
-  type FolderHighlightProps as FolderHighlightPrimitiveProps,
-  type FolderProps as FolderPrimitiveProps,
   type FolderContentProps as FolderContentPrimitiveProps,
-  type FileHighlightProps as FileHighlightPrimitiveProps,
   type FileProps as FilePrimitiveProps,
-  type FileIconProps as FileIconPrimitiveProps,
   type FileLabelProps as FileLabelPrimitiveProps,
 } from '@/registry/primitives/radix/files';
 import { cn } from '@workspace/ui/lib/utils';

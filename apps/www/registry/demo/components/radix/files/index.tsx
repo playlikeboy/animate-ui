@@ -11,7 +11,7 @@ import {
 } from '@/registry/components/radix/files';
 import { FileJsonIcon } from 'lucide-react';
 
-export const FilesDemo = () => {
+export const RadixFilesDemo = () => {
   return (
     <div className="relative max-w-[500px] max-h-[350px] size-full rounded-2xl border bg-background overflow-auto">
       <Files className="w-full" defaultOpen={['app']}>

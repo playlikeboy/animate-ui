@@ -5,9 +5,11 @@ import {
   PopoverTrigger as PopoverTriggerPrimitive,
   PopoverContent as PopoverContentPrimitive,
   PopoverPortal as PopoverPortalPrimitive,
+  PopoverClose as PopoverClosePrimitive,
   type PopoverProps as PopoverPrimitiveProps,
   type PopoverTriggerProps as PopoverTriggerPrimitiveProps,
   type PopoverContentProps as PopoverContentPrimitiveProps,
+  type PopoverCloseProps as PopoverClosePrimitiveProps,
 } from '@/registry/primitives/radix/popover';
 import { cn } from '@workspace/ui/lib/utils';
 
@@ -46,11 +48,19 @@ function PopoverContent({
   );
 }
 
+type PopoverCloseProps = PopoverClosePrimitiveProps;
+
+function PopoverClose(props: PopoverCloseProps) {
+  return <PopoverClosePrimitive {...props} />;
+}
+
 export {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  PopoverClose,
   type PopoverProps,
   type PopoverTriggerProps,
   type PopoverContentProps,
+  type PopoverCloseProps,
 };
