@@ -15,7 +15,7 @@ import { useControlledState } from '@/registry/hooks/use-controlled-state';
 
 type TabsContextType = {
   value: string | undefined;
-  setValue: (value: string) => void;
+  setValue: TabsProps['onValueChange'];
 };
 
 const [TabsProvider, useTabs] =
@@ -114,6 +114,7 @@ type TabsContentsProps = HTMLMotionProps<'div'> & {
 
 function TabsContents({
   transition = { type: 'spring', stiffness: 200, damping: 30 },
+  style,
   ...props
 }: TabsContentsProps) {
   const { value } = useTabs();
@@ -123,7 +124,7 @@ function TabsContents({
       data-slot="tabs-contents"
       layout="size"
       layoutDependency={value}
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', ...style }}
       transition={{ layout: transition }}
       {...props}
     />
