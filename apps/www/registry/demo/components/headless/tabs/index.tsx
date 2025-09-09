@@ -30,7 +30,7 @@ export function RadixTabsDemo() {
           </Tab>
         </TabList>
         <TabPanels>
-          <Card>
+          <Card className="shadow-none">
             <TabPanel className="flex flex-col gap-6">
               <CardHeader>
                 <CardTitle>Account</CardTitle>
