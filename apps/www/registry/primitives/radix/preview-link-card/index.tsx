@@ -76,9 +76,8 @@ function PreviewLinkCard({
   );
 }
 
-type PreviewLinkCardTriggerProps = HoverCardTriggerPropsPrimitive & {
-  href?: string;
-};
+type PreviewLinkCardTriggerProps = HoverCardTriggerPropsPrimitive &
+  React.ComponentProps<'a'>;
 
 function PreviewLinkCardTrigger({
   asChild,
@@ -143,6 +142,7 @@ function PreviewLinkCardContent({
 
   return (
     <HoverCardContentPrimitive
+      data-slot="preview-link-card-content"
       side={side}
       sideOffset={sideOffset}
       align={align}
